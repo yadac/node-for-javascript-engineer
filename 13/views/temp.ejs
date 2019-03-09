@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ajax</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajax',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#msg').html(data.msg);
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form>
+        <div id="msg"></div>
+        <button id="btn" type="button">send</button>
+    </form>
+</body>
+
+</html>

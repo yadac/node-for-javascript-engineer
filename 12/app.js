@@ -5,8 +5,8 @@ var session = require('./../expresstest/node_modules/express-session');
 
 app.engine('ejs', ejs.renderFile);
 app.use(session({
-    secret: 'hoge',
-    resave: true,
+    secret: 'hoge', // for hash
+    resave: true,   // even if nothing change, save session every time
     saveUninitialized: true
 }));
 
