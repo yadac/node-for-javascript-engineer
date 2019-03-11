@@ -1,0 +1,24 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>chatroom</title>
+</head>
+
+<body>
+    <h1>current user</h1>
+    <h2 id="counter">0</h2>
+</body>
+
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script>
+    var socket = io.connect("localhost:1234");
+    socket.on('change', function (o) {
+        document.getElementById('counter').innerHTML = o.count;
+    });
+    socket.on('connect', function () {
+        socket.emit('join');
+    });
+</script>
+
+</html>

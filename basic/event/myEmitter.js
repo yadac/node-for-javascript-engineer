@@ -3,31 +3,28 @@ const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {
 };
 
-// const myEmitter = new MyEmitter();
-// myEmitter.on('event', function () {
-//     console.log('an event occurred');
-// })
-
-// exports.emitEvent = function () {
-//     myEmitter.emit('event');
-// }
-
-var emitEvent = function () { 
-    var myEmitter = null;
+var emitEvent = function () {
+    let myEmitter = null;
 };
 
 emitEvent.prototype.init = function () {
+    let count = 0;
     this.myEmitter = new MyEmitter();
-    this.myEmitter.on('event', function () {
-        console.log('an event occurred');
+    this.myEmitter.on('event1', function () {
+        count++;
+        console.log(`(${count})an event1 occurred`);
     });
-    return true;
+    this.myEmitter.on('event2', function () {
+        count++;
+        console.log(`(${count})an event2 occurred`);
+    });
 }
 
 emitEvent.prototype.fire = function () {
-    this.myEmitter.emit('event');
-    return true;
+    this.myEmitter.emit('event1');
+}
+emitEvent.prototype.fire2 = function () {
+    this.myEmitter.emit('event2');
 }
 
-var ee = new emitEvent();
-module.exports = ee;
+module.exports = new emitEvent();

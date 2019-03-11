@@ -1,4 +1,11 @@
 var myEmitter = require('./myEmitter');
 
 myEmitter.init();
-myEmitter.fire();
+
+setInterval(function () {
+    myEmitter.fire();
+}, 1000)
+
+setInterval(function () {
+    myEmitter.fire2();
+}, 2000)
